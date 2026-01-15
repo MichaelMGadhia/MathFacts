@@ -1,5 +1,7 @@
 \documentclass{article}
 
+\usepackage{amsmath, amssymb, amsthm}
+
 % YYYY-MM-DD Date format
 \usepackage[style=iso]{datetime2}
 
@@ -47,6 +49,18 @@ Before that, we'll look at intuitive arguments to get a sense for why it's true.
 The first way to think about it may have already occurred to you, based on the first example of a repeating decimal.
 One third is $0.\overline{3}$, and multiplying this by three would look like $0.\overline{9}$, but three thirds is exactly one.
 While this isn't a complete proof, this argument is often enough to convince students this is true.
+There is another way to demonstrate this with grade-school algebra without relying on being given a definition of one third, which is given below.
+
+Let $x = 0.9999...$, and consider what happens when we multiply $x$ by $10$.
+Since this can be seen as `moving the decimal point' of a decimal number, we get $10x = 9.9999...$.
+Now, we can subtract $x$ from both sides and get the following:
+\begin{align*}
+    10x - x &= 9.9999... - x\\
+    9x &= 9.9999... - (0.9999...)\\
+    9x &= 9
+    x &= 1
+\end{align*}
+
 
 % Formal proofs presented with either approachable/defined terminology or warning about unfamiliarity
 \subsection{Rigorous Proof}
