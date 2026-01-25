@@ -48,4 +48,25 @@ This would make the number one third be the infinitely long $0.3333...$ and will
 In this way, every number will have an infinitely long "tail" of digits after the decimal point.
 Now, we are ready to outline the proof.
 
+% Outline of proof by diagonalization
+\section{Diagonalization}
+We will use a contradiction: assume that there are just as many natural numbers as real numbers between zero and one, and then show that assuming that led to something impossible.
+Let's say the sizes are equal, so you can match every element of each set to exactly one element in the other.
+Since we want to prove this is impossible, we will make no other assumptions about how to do that, so this must work for any possible matching of elements.
+I will write an example with random numbers to illustrate this, but it will become clear that the numbers could be changed without affecting the result.
+Imagine such a matching below:
+%
+% Adapted from https://tex.stackexchange.com/a/501747
+\begin{alignat*}{7}
+ 0 & = 0. & & 1 & & 4 & & 5 & & 0 & & 9 & & \ldots \\
+ 1 & = 0. & & 1 & & 1 & & 1 & & 1 & & 1 & & \ldots \\
+ 2 & = 0. & & 4 & & 2 & & 6 & & 5 & & 3 & & \ldots \\
+ 3 & = 0. & & 5 & & 1 & & 2 & & 5 & & 2 & & \ldots \\
+ 4 & = 0. & & 2 & & 4 & & 7 & & 7 & & 1 & & \ldots\\[-1.33ex]
+ \vdots
+\end{alignat*}
+
+
+
+
 \end{document}
