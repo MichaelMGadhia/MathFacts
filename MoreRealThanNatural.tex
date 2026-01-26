@@ -45,7 +45,7 @@ But if adding or removing one element doesn't change the size $\N$, why can some
 
 We will represent all real numbers between 0 and 1 as decimals, starting with a zero and a decimal point.
 This would make the number one third be the infinitely long $0.3333...$ and will include infinitely many trailing zeroes for numbers that terminate, so one half is $0.5000...$.
-In this way, every number will have an infinitely long "tail" of digits after the decimal point.
+In this way, every number will have an infinitely long ``tail" of digits after the decimal point.
 Now, we are ready to outline the proof.
 
 % Outline of proof by diagonalization
@@ -59,13 +59,42 @@ Imagine such a matching below:
 % Adapted from https://tex.stackexchange.com/a/501747
 \begin{alignat*}{7}
  0 & = 0. & & 1 & & 4 & & 5 & & 0 & & 9 & & \ldots \\
- 1 & = 0. & & 1 & & 1 & & 1 & & 1 & & 1 & & \ldots \\
- 2 & = 0. & & 4 & & 2 & & 6 & & 5 & & 3 & & \ldots \\
- 3 & = 0. & & 5 & & 1 & & 2 & & 5 & & 2 & & \ldots \\
- 4 & = 0. & & 2 & & 4 & & 7 & & 7 & & 1 & & \ldots\\[-1.33ex]
+ 1 & = 0. & & 1 & & 2 & & 1 & & 1 & & 1 & & \ldots \\
+ 2 & = 0. & & 4 & & 2 & & 1 & & 5 & & 3 & & \ldots \\
+ 3 & = 0. & & 5 & & 1 & & 2 & & 6 & & 2 & & \ldots \\
+ 4 & = 0. & & 2 & & 4 & & 7 & & 7 & & 5 & & \ldots\\[-1.33ex]
  \vdots
 \end{alignat*}
+%
+If we can prove any matching like this is missing something, we know our assumption was impossible.
+We will not only show this now, but also use the matching to give a specific element that's missing!
 
+First, choose two digits, a primary and a fallback.
+For the example above, I will use 1 first, and 6 as a fallback.
+Now, I will look at the first number in the matching (the one matched with zero), and see that the first digit after the decimal point is a 1.
+Since I want to make sure our new number isn't on the list, the first digit will be 6.
+Then, I look at the \emph{second} digit of the \emph{second} number on the list (matched with 1), and see that it is a 2.
+This means I can put a 1 as the second digit.
+Now, I take the third digit of the third number, a 1, and put a 6.
+The fourth digit of the fourth number is a 6, so I put a 1.
+The fifth digit of the fifth number is a 5, so I put a 1.
+The number looks like $0.61611...$, and to get its infinite ``tail'' of digits, I do this for the entire list.
+
+Now, I claim that this new number appears nowhere in the matching, meaning that the matching is missing something.
+To show why that's true, let's look at each number one by one to see if it's in the matching.
+Is it the first number in the matching?
+No, because its first digit is different, a 1 versus a 6.
+Is it the second number in the matching?
+No, its second digit is different, a 2 versus a 1.
+Continuing this, we find that this number is different from every item in the list in at least one digit place.
+So, we've found a number that isn't in the matching but should be, and shown that something is missing!
+
+If this number were added to a matching, we could simply redo this process with any two digits to produce another missing number, so this works for all matchings.
+This means our assumption that the two sets were the same size led to something impossible, and must therefore be false.
+So they are not the same size, and since what's missing is a real number, there are more real numbers between zero and one than there are natural numbers.
+
+
+% Discussion, mention of formal terms
 
 
 
