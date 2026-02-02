@@ -5,6 +5,9 @@
 % YYYY-MM-DD Date format
 \usepackage[style=iso]{datetime2}
 
+% Non-numbered theorem
+\newtheorem*{theorem*}{Theorem}
+
 \title{Two Ways To Write One: Unintuitive Repeating Decimals}
 \author{Michael Gadhia}
 \date{\today}
@@ -57,7 +60,7 @@ Now, we can subtract $x$ from both sides and get the following:
 \begin{align*}
     10x - x &= 9.9999... - x\\
     9x &= 9.9999... - (0.9999...)\\
-    9x &= 9
+    9x &= 9\\
     x &= 1
 \end{align*}
 
@@ -72,6 +75,28 @@ This creates a sequence where $x_n$ has $n$ nines after a decimal point.
 We then have our definition of $0.\overline{9}$: it is the number this sequence approaches as $n$ gets larger.
 The sequence will never reach this number, but every term gets closer to it, this is the \emph{limit} of the sequence.
 Now, we will prove that this number that the sequence approaches is in fact equal to 1.
+
+\begin{theorem*}
+    The sequence of numbers $x_1, x_2, \ldots$ defined above approaches 1.
+    In other words, $0.\overline{9} = 1$.
+\end{theorem*}
+\begin{proof}
+    Subtract 1 from every term $x_1, x_2, \ldots$ in the sequence.
+    $1 - 0.9 = 0.1$, $1 - 0.99 = 0.01$, and so on.
+    For any $n$, $1 - x_n$ is zeroes followed by a 1 at the $n$th position, equal to $\frac{1}{10^n}$.
+
+    We now want to show that $1 - x_n$ approaches zero, since the sequence approaches $0.\overline{9}$, and showing that $1 - 0.\overline{9}$ proves they are equal.
+    So we must show that there is nothing greater than zero that is always smaller than $1 - x_n$ for every $n$.
+    This relies on the fact that any number has a whole number bigger than it, which we call the Archimedean property (a fancy name for something very simple).
+
+    If there was a number greater than zero that was always smaller than $1 - x_n$, some number $m$, it would have to be smaller than $\frac{1}{10^n}$ for every value of $n$, since that equals $1 - x_n$.
+    But we can apply the Archimedian property: if every number has some whole number $a$ bigger than it, then any number (specifically positive ones in this case) has some (positive) $\frac{1}{a}$ smaller than it.
+    So, for $m$, which is a positive number greater than zero, there must be some $\frac{1}{a}$ that's smaller.
+    But there must be some $n$ for which $10^n$ is greater than $a$, so $\frac{1}{10^2}$ is smaller than $m$.
+    That contradicts our definition of $m$, so $m$ cannot exist!
+    From that, we know that $1 - x_n$ approaches zero, so $1 - 0.\overline{9} = 0$, and therefore $0.\overline{9} = 1$.
+
+\end{proof}
 
 
 \end{document}
