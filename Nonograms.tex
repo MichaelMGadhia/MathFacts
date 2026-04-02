@@ -51,7 +51,7 @@ Let's look at some visual examples.
 \begin{center}
     \begin{nonogram}[rows=1,columns=5,scale=0.35,width=3cm,
         fontsize=footnotesize,helplines=5,extracells=2, solution=true]
-        \nonogramV{{3,1}}
+        \nonogramV{{1,3}}
     \end{nonogram}
 \end{center}
 
@@ -72,24 +72,54 @@ Sometimes, we can't immediately solve a line.
 \begin{center}
     \begin{nonogram}[rows=1,columns=10,scale=0.35,width=3cm,
         fontsize=footnotesize,helplines=5,extracells=2, solution=true]
-        \nonogramV{{5,3}}
+        \nonogramV{{3,5}}
     \end{nonogram}
 \end{center}
 
 Here, there are three possibilities.
 If the block of 5 starts on the first cell, there could be one or two spaces after it, so the block of 3 could start on the seventh or eighth cell.
+Otherwise, the 5 can start on the second cell, leaving just enough room for the 3 to start on the eighth.
 
+\begin{center}
+    \begin{nonogram}[rows=1,columns=10,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2, solution=true]
+        \nonogramV{{3,5}}
+        \nonogramfill{10}{1}
+        \nonogramrow{1}{1/5, 7/3}
+    \end{nonogram}
 
-% Worked example with step-by-step visuals
-\section{Solving Nonograms}
+    \begin{nonogram}[rows=1,columns=10,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2, solution=true]
+        \nonogramV{{3,5}}
+        \nonogramfill{10}{1}
+        \nonogramrow{1}{1/5, 8/3}
+    \end{nonogram}
 
-% Examples of unique solution, multiple solutions, and no solution
-\subsection{Solvability}
+    \begin{nonogram}[rows=1,columns=10,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2, solution=true]
+        \nonogramV{{3,5}}
+        \nonogramfill{10}{1}
+        \nonogramrow{1}{2/5, 8/3}
+    \end{nonogram}
+\end{center}
 
-% Brief explanation of line-solving techniques
-\section{Useful Techniques}
+But that doesn't mean we can't make progress!
+Notice how in all possible ways this could be solved, some cells are always filled by the 5 and the 3.
+This means we can definitely fill in those cells.
+If this is a row in a larger puzzle, each of those cells also belongs to a column with numbers, so doing that might lead to progress on a column.
 
+\begin{center}    
+    \begin{nonogram}[rows=1,columns=10,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2, solution=true]
+        \nonogramV{{3,5}}
+        \nonogramrow{1}{2/4, 8/2}
+    \end{nonogram}
+\end{center}
 
+Here is a nonogram puzzle with 5 rows and 5 columns, and its solution on the right (it's supposed to be a picture of a dog).
+Try to work through it yourself, starting with the second column that has a 4.
+Using what you know already, you might be able to recreate the solution on the right using logic, without copying it.
+Don't worry if that's still confusing, we'll solve one step by step in the next section and learn some useful techniques.
 
 \begin{center}
     % Example puzzle
@@ -120,6 +150,16 @@ If the block of 5 starts on the first cell, there could be one or two spaces aft
         
     \end{nonogram}
 \end{center}
+
+% Worked example with step-by-step visuals
+\section{Solving Nonograms}
+
+% Examples of unique solution, multiple solutions, and no solution
+\subsection{Solvability}
+
+
+
+
 
 
 \end{document}
