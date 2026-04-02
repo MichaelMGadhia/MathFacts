@@ -1,0 +1,56 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, amsthm}
+
+\usepackage{logicpuzzle}
+
+% YYYY-MM-DD Date format
+\usepackage[style=iso]{datetime2}
+
+\title{Nonograms}
+\author{Michael Gadhia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+%
+This is a proof of concept using the \texttt{logicpuzzle} package, which will hopefully allow me to typeset puzzles easily.
+\begin{center}
+    % Example puzzle
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+        % Pay attention to order numbers are defined in, since I don't fully understand it without example
+
+        \nonogramV{{1,1},{4},{1,2},{1},{1}}
+        \nonogramH{{1},{4},{1,1},{1},{3}}
+
+    \end{nonogram}
+    \hspace{1cm}
+    % Solution to adjacent puzzle, but did not set solution=true, need to determine preference for solution visuals 
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+
+        \nonogramV{{1,1},{4},{1,2},{1},{1}}
+        \nonogramH{{1},{4},{1,1},{1},{3}}
+
+        \nonogramrow{5}{3/1}
+        \nonogramrow{4}{2/1}
+        \nonogramrow{3}{1/2, 5/1}
+        \nonogramrow{2}{2/4}
+        \nonogramrow{1}{2/1, 5/1}
+        
+        % Current solution is to fill every cell with an X and filled cells will cover it.
+        % Partially finished puzzles will need each desired X placed individually.
+        % TODO is there anything less stupid
+        \foreach \i in {1,...,5}
+        \foreach \j in {1,...,5}
+        {
+            \placesegment{\i}{\j}{$\times$}
+        }
+        
+    \end{nonogram}
+\end{center}
+
+
+\end{document}
