@@ -116,10 +116,10 @@ If this is a row in a larger puzzle, each of those cells also belongs to a colum
     \end{nonogram}
 \end{center}
 
-Here is a nonogram puzzle with 5 rows and 5 columns, and its solution on the right (it's supposed to be a picture of a dog).
-Try to work through it yourself, starting with the second column that has a 4.
-Using what you know already, you might be able to recreate the solution on the right using logic, without copying it.
-Don't worry if that's still confusing, we'll solve one step by step in the next section and learn some useful techniques.
+Here is a nonogram puzzle with 5 rows and 5 columns.
+Try to work through it yourself.
+Using what you know already, you might be able to get the solution, or the rules might still be confusing.
+Don't worry, we'll solve it step by step in the next section.
 
 \begin{center}
     % Example puzzle
@@ -131,8 +131,166 @@ Don't worry if that's still confusing, we'll solve one step by step in the next 
         \nonogramH{{1},{4},{1,1},{1},{3}}
 
     \end{nonogram}
-    \hspace{1cm}
-    % Solution to adjacent puzzle, but did not set solution=true, need to determine preference for solution visuals 
+\end{center}
+
+% Worked example with step-by-step visuals
+\subsection{Solving A Nonogram}
+
+Let's start by looking at columns, and look at rows after we do what we can.
+The columns with 1s in them don't tell us much yet, but the column with a 4 can only be one of two things (the 4 starts at the top or the bottom), and in both cases the middle three cells are filled.
+We'll mark those for now.
+
+\begin{center}
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+        
+        \nonogramV{{1,1},{4},{1,2},{1},{1}}
+        \nonogramH{{1},{4},{1,1},{1},{3}}
+        \nonogramcolumn{2}{2/3}
+
+    \end{nonogram}
+\end{center}
+
+Then, the last column can only be in one of three positions, and all of them have the middle cell filled.
+Take a moment to make sure that makes sense based on what we've done so far.
+We'll mark that too.
+
+\begin{center}
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+
+        \nonogramV{{1,1},{4},{1,2},{1},{1}}
+        \nonogramH{{1},{4},{1,1},{1},{3}}
+        \nonogramcolumn{2}{2/3}
+        \nonogramcolumn{5}{3/1}
+
+    \end{nonogram}
+\end{center}
+
+Now, let's look at the rows.
+The second row is already solved, so we'll mark all empty squares.
+In the third row, the cell on the far right is filled, and that must be the 1, so the cell to its left can't also be filled.
+We'll mark empty squares for both of those rows.
+
+\begin{center}
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+        
+        \nonogramV{{1,1},{4},{1,2},{1},{1}}
+        \nonogramH{{1},{4},{1,1},{1},{3}}
+        \nonogramcolumn{2}{2/3}
+        \nonogramcolumn{5}{3/1}
+        \placex{4}{3}
+        \placex{1}{4}
+        \placex{3}{4}
+        \placex{4}{4}
+        \placex{5}{4}
+
+    \end{nonogram}
+\end{center}
+
+Also, the row with a 4 tells us the middle 3 cells in it are filled, just like the column.
+
+\begin{center}
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+       
+        \nonogramV{{1,1},{4},{1,2},{1},{1}}
+        \nonogramH{{1},{4},{1,1},{1},{3}}
+        \nonogramrow{2}{2/3}
+        \nonogramcolumn{2}{2/3}
+        \nonogramcolumn{5}{3/1}
+        
+        \placex{4}{3}
+        \placex{1}{4}
+        \placex{3}{4}
+        \placex{4}{4}
+        \placex{5}{4}
+
+    \end{nonogram}
+\end{center}
+
+Back to the columns, the last column has only one possibility, where the 3 is on the bottom.
+We'll fill in that block and mark the top cell empty.
+
+\begin{center}
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+        
+        \nonogramV{{1,1},{4},{1,2},{1},{1}}
+        \nonogramH{{1},{4},{1,1},{1},{3}}
+        \nonogramcolumn{2}{2/3}
+        \nonogramcolumn{5}{1/3}
+        \nonogramrow{2}{2/3}
+        \placex{4}{3}
+        \placex{1}{4}
+        \placex{3}{4}
+        \placex{4}{4}
+        \placex{5}{4}
+        \placex{5}{5}
+
+    \end{nonogram}
+\end{center}
+
+There are easier ways to progress now, but notice that the middle column has only one solution.
+Since it only contains 1s, its bottom and middle cell must be empty to avoid making a block of 2.
+That means its filled cell in the fourth row is the bottom of the two 1s, and the other one has one space left at the top.
+
+\begin{center}
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+
+        \nonogramV{{1,1},{4},{1,2},{1},{1}}
+        \nonogramH{{1},{4},{1,1},{1},{3}}
+        \nonogramcolumn{2}{2/3}
+        \nonogramcolumn{5}{1/3}
+        \nonogramrow{2}{2/3}
+        \nonogramrow{5}{3/1}
+        \placex{4}{3}
+        \placex{1}{4}
+        \placex{3}{4}
+        \placex{4}{4}
+        \placex{5}{4}
+        \placex{5}{5}
+        \placex{3}{1}
+        \placex{3}{3}
+
+    \end{nonogram}
+\end{center}
+
+We're almost done.
+The first and fourth rows are done as is the fourth column, so we can finish them with empty cells.
+
+\begin{center}
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+
+        \nonogramV{{1,1},{4},{1,2},{1},{1}}
+        \nonogramH{{1},{4},{1,1},{1},{3}}
+        \nonogramcolumn{2}{2/3}
+        \nonogramcolumn{5}{1/3}
+        \nonogramrow{2}{2/3}
+        \nonogramrow{5}{3/1}
+        \placex{4}{3}
+        \placex{1}{4}
+        \placex{3}{4}
+        \placex{4}{4}
+        \placex{5}{4}
+        \placex{5}{5}
+        \placex{3}{1}
+        \placex{3}{3}
+        \placex{4}{1}
+        \placex{4}{5}
+        \placex{1}{5}
+        \placex{2}{5}
+        \placex{1}{2}
+
+    \end{nonogram}
+\end{center}
+
+It should be easy now to finish the puzzle!
+
+\begin{center}
     \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
         fontsize=footnotesize,helplines=5,extracells=2]
 
@@ -151,14 +309,15 @@ Don't worry if that's still confusing, we'll solve one step by step in the next 
     \end{nonogram}
 \end{center}
 
-% Worked example with step-by-step visuals
-\section{Solving Nonograms}
+It's a (very simple) picture of a dog!
+
+That's all I plan to include on simple solving techniques.
+The next sections assume you have a basic understanding of what a nonogram puzzle is, and could solve one like the example above.
+% I'm finally done with that part now I can start writing cool stuff
+% TODO that explanation would probably be an awful first introduction
 
 % Examples of unique solution, multiple solutions, and no solution
-\subsection{Solvability}
-
-
-
+\section{Solvability}
 
 
 
