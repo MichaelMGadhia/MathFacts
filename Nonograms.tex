@@ -400,4 +400,38 @@ The two solutions pictured both satisfy all requirements from rows and columns, 
 This means not all nonograms correspond to a single picture.
 But, most puzzles made for humans to solve are designed to have a unique solution.
 
+% Puzzles which can't be solved line by line
+\subsection{Line-Solvability}
+This one gets a bit more complicated, and we'll talk about it a lot more.
+Sometimes, a nonogram has a unique solution, but it can't be found by looking at one line at a time.
+In this case, we say it is not line-solvable.
+You might think this is only true of huge, complicated puzzles, but look at the one below.
+
+\begin{center}
+    \begin{nonogram}[rows=4,columns=2,scale=0.35,width=2cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+
+        \nonogramV{{1},{1},{1},{1}}
+        \nonogramH{{2},{1,1}}
+
+    \end{nonogram}
+\end{center}
+
+This is a nonogram with a unique solution, but looking at it one line at a time doesn't let you figure out any cells!
+Here is its solution, which you can see satisfies all line numbers.
+How would you show that no other solution exists?
+
+\begin{center}
+    \begin{nonogram}[rows=4,columns=2,scale=0.35,width=2cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+
+        \nonogramV{{1},{1},{1},{1}}
+        \nonogramH{{2},{1,1}}
+        \nonogramcolumn{1}{2/2}
+        \nonogramcolumn{2}{1/1,4/1}
+        \nonogramfill{2}{4}
+
+    \end{nonogram}
+\end{center}
+
 \end{document}
