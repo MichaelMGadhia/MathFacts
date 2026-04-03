@@ -134,7 +134,7 @@ Don't worry, we'll solve it step by step in the next section.
 \end{center}
 
 % Worked example with step-by-step visuals
-\subsection{Solving A Nonogram}
+\subsection{Solving a Nonogram}
 
 Let's start by looking at columns, and look at rows after we do what we can.
 The columns with 1s in them don't tell us much yet, but the column with a 4 can only be one of two things (the 4 starts at the top or the bottom), and in both cases the middle three cells are filled.
@@ -319,6 +319,85 @@ The next sections assume you have a basic understanding of what a nonogram puzzl
 % Examples of unique solution, multiple solutions, and no solution
 \section{Solvability}
 
+You might want to try creating a picture of squares, and then writing numbers around it to make a nonogram.
+If you have done that and give it to someone to solve (or solve it yourself without using the answer), you might find that you can't solve it with what you know.
+There are a couple reasons this happens, which turn out to be interesting properties of nonograms.
 
+\subsection{Number of Solutions}
+Not every nonogram has one solution!
+
+We'll make very small examples to demonstrate this.
+This nonogram has a single unique solution.
+Given the numbers in the puzzle, you can get to the exact picture on the right without guessing.
+
+\begin{center}
+    \begin{nonogram}[rows=2,columns=2,scale=0.35,width=2cm,
+        fontsize=footnotesize,helplines=5,extracells=1]
+
+        \nonogramV{{1},{2}}
+        \nonogramH{{1},{2}}
+
+    \end{nonogram}
+    \begin{nonogram}[rows=2,columns=2,scale=0.35,width=2cm,
+        fontsize=footnotesize,helplines=5,extracells=1]
+
+        \nonogramV{{1},{2}}
+        \nonogramH{{1},{2}}
+        \nonogramrow{2}{1/2}
+        \nonogramrow{1}{2/1}
+        \placex{1}{1}
+        \puzzlestrut
+
+    \end{nonogram}
+\end{center}
+
+This nonogram has no solution.
+The first row would fill in both top cells, but then both the columns are solved, and there's no way for the bottom row to be solved.
+
+\begin{center}
+    \begin{nonogram}[rows=2,columns=2,scale=0.35,width=2cm,
+        fontsize=footnotesize,helplines=5,extracells=1]
+
+        \nonogramV{{1},{2}}
+        \nonogramH{{1},{1}}
+
+    \end{nonogram}
+\end{center}
+
+This nonogram has two possible solutions!
+The two solutions pictured both satisfy all requirements from rows and columns, so there isn't one unique way to fill in the cells.
+
+\begin{center}
+    \begin{nonogram}[rows=2,columns=2,scale=0.35,width=2cm,
+        fontsize=footnotesize,helplines=5,extracells=1]
+
+        \nonogramV{{1},{1}}
+        \nonogramH{{1},{1}}
+
+    \end{nonogram}
+    \begin{nonogram}[rows=2,columns=2,scale=0.35,width=2cm,
+        fontsize=footnotesize,helplines=5,extracells=1]
+
+        \nonogramV{{1},{1}}
+        \nonogramH{{1},{1}}
+        \nonogramrow{1}{1/1}
+        \nonogramrow{2}{2/1}
+        \nonogramfill{2}{2}
+
+    \end{nonogram}
+    \begin{nonogram}[rows=2,columns=2,scale=0.35,width=2cm,
+        fontsize=footnotesize,helplines=5,extracells=1]
+
+        \nonogramV{{1},{1}}
+        \nonogramH{{1},{1}}
+        \nonogramrow{1}{2/1}
+        \nonogramrow{2}{1/1}
+        \nonogramfill{2}{2}
+
+    \end{nonogram}
+\end{center}
+
+This means not all nonograms correspond to a single picture.
+But, most puzzles made for humans to solve are designed to have a unique solution.
 
 \end{document}
