@@ -103,6 +103,57 @@ Here are a few more like that, hopefully solving them lets you develop some tech
 
 \subsection{Line-Solvability}
 
-These are still regular puzzles, but looking at one line at a time is not enough to solve them.
+Looking at these next puzzles one line at a time is not enough to solve them.
+But, they still have a unique solution, even if they seem confusing at first.
+Consider this small example first.
+
+\begin{center}
+    % 4x2 curve
+    \begin{nonogram}[rows=4,columns=2,scale=0.35,width=2cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+
+        \nonogramV{{1},{1},{1},{1}}
+        \nonogramH{{2},{1,1}}
+
+    \end{nonogram}
+\end{center}
+
+Did solving that feel different than the previous ones?
+Sometimes, you can progress using contradictions.
+Imagine one cell being filled, then figure out if assuming that would lead to something impossible.
+If it would, that assumption must be wrong, so the cell is empty.
+All of these next ones will require multi-line logic at some point, and finding the right assumption to create a contradiction can be slow.
+Hopefully my fact sheet will eventually contain advanced techniques that make that easier.
+
+The puzzle on the left is not really a picture of anything, and it may be more difficult.
+Note that rows and columns with a 0 have only empty cells, so you can solve those immediately.
+If you're stuck after that, think about the top left and try to find something that would be impossible.
+
+The puzzle on the right may be easy to start, but it will still need advanced logic to finish.
+If you choose a good cell to assume is or isn't filled, you might only have to find one contradiction.
+
+\begin{center}
+    % 5x5 https://puzzling.stackexchange.com/a/129850
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+
+        \nonogramV{{1},{2},{0},{2},{2}}
+        \nonogramH{{2},{1},{0},{2},{2}}
+
+    \end{nonogram}
+    \hspace{1cm}
+    % 5x5 https://puzzling.stackexchange.com/a/129931
+    \begin{nonogram}[rows=5,columns=5,scale=0.35,width=3cm,
+        fontsize=footnotesize,helplines=5,extracells=2]
+
+        \nonogramV{{1,1},{1,2},{2},{2},{1}}
+        \nonogramH{{2},{2},{2},{2},{2}}
+
+    \end{nonogram}
+\end{center}
+
+
+
+
 
 \end{document}
