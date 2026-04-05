@@ -1,0 +1,41 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, amsthm}
+
+\usepackage{logicpuzzle}
+
+% YYYY-MM-DD Date format
+\usepackage[style=iso]{datetime2}
+
+% Allows use of internal commands
+\makeatletter
+
+% Place an X for an empty cell
+\newcommand*\placex[2]{
+    \LP@ingrid{#1}{#2}{\LP@NG@columns}{\LP@NG@rows}{nonogram}
+    \LP@G@setcellcontent[hcenter,vcenter]{#1}{#2}{$\times$}
+    }
+
+% For filling a solved puzzle's empty squares with X marks
+% Current solution is to fill every cell with an X and filled cells will cover it.
+% Partially finished puzzles will need each desired X placed individually.
+% TODO is there anything less stupid
+\newcommand{\nonogramfill}[2]{
+    \foreach \i in {1,...,#1}
+    \foreach \j in {1,...,#2}
+    {
+        \placex{\i}{\j}
+    }
+    }
+
+
+\title{Nonogram Worksheet}
+\author{Michael Gadhia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+
+\end{document}
